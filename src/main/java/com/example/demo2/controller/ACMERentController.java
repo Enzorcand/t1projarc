@@ -37,7 +37,7 @@ public class ACMERentController {
     }
 
     @GetMapping("/consultacliente")
-    public Cliente consultarCliente(@RequestParam String cpf) {
+    public Cliente consultarCliente(@RequestParam(value = "cliente") String cpf) {
         return system.consultarCliente(cpf);
     }
 
