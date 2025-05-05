@@ -1,14 +1,14 @@
 package com.example.demo2.model;
 
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 public class Locacao {
     private static int contador = 1;
-    private String codigo;
+    final String codigo;
     private Cliente cliente;
     private Automovel automovel;
-    private String dataInicio;
+    final String dataInicio;
     private int dias;
 
     public Locacao(Cliente cliente, Automovel automovel, String dataInicio, int dias) {
@@ -32,23 +32,4 @@ public class Locacao {
         automovel.setDisponivel(true);
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public Automovel getAutomovel() {
-        return automovel;
-    }
-
-    public String getDataInicio() {
-        return dataInicio;
-    }
-
-    public int getDias() {
-        return dias;
-    }
 }
