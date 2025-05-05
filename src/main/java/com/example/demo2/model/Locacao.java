@@ -1,5 +1,8 @@
 package com.example.demo2.model;
 
+import lombok.Data;
+
+@Data
 public class Locacao {
     private static int contador = 1;
     private String codigo;
