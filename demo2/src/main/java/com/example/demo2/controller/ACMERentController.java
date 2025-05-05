@@ -17,5 +17,25 @@ public class ACMERentController {
         system = new ACMERent();
     }
 
+    @GetMapping("/listaautomoveis")
+    public List<Automovel> listarAutomoveis() {
+        return system.getTodosAutomoveis();
+    }
+
+    @GetMapping("/listaclientes")
+    public List<Cliente> listarClientes() {
+        return system.getTodosClientes();
+    }
+
+    @GetMapping("/listalocacoes")
+    public List<Locacao> listarLocacoes() {
+        return system.getTodasLocacoes();
+    }
+
+    @GetMapping("/consultacliente")
+    public Cliente consultarCliente(@RequestParam String cpf) {
+        return system.consultarCliente(cpf);
+    }
+
 
 }
