@@ -1,6 +1,7 @@
 package com.example.demo2.model;
 
 public class Automovel {
+    private String id;
     private String placa;
     private int ano;
     private double valorDiaria;
@@ -14,6 +15,14 @@ public class Automovel {
     }
 
     public Automovel(String placa, int ano, double valorDiaria, boolean disponivel) {
+        this.placa = placa;
+        this.ano = ano;
+        this.valorDiaria = valorDiaria;
+        this.disponivel = disponivel;
+    }
+
+    public Automovel(String id, String placa, int ano, double valorDiaria, boolean disponivel) {
+        this.id = id;
         this.placa = placa;
         this.ano = ano;
         this.valorDiaria = valorDiaria;
@@ -42,5 +51,13 @@ public class Automovel {
 
     public double getValorDiaria() {
         return valorDiaria;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
