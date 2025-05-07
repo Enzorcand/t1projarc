@@ -99,7 +99,7 @@ public class ACMERentController {
             return ResponseEntity.notFound().build();
         }
         resp.finalizar();
-        system.getTodosAutomoveis().remove(resp);
+        system.getTodasLocacoes().remove(resp);
         return ResponseEntity.ok(true);
     }
 }
