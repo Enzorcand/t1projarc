@@ -2,11 +2,11 @@ package com.example.demo2.model;
 
 import java.util.*;
 
-public class ACMERent {
-    private List<Cliente> clientes = new ArrayList<>();
-    private List<Automovel> automoveis = new ArrayList<>();
-    private List<Locacao> locacoes = new ArrayList<>();
+public class ACMERent implements ISystem{
 
+    List<Cliente> clientes = new ArrayList<>();
+    List<Automovel> automoveis = new ArrayList<>();
+    List<Locacao> locacoes = new ArrayList<>();
 
     public ACMERent() {
         // criar 10 carros diferentes e por na lista
@@ -27,8 +27,6 @@ public class ACMERent {
         clientes.add(new Cliente("Marst", "271780809", "55678657653"));
 
     }
-
-
     public Cliente consultarCliente(String cpf) {
         return clientes.stream().filter(c -> c.getCpf().equals(cpf)).findFirst().orElse(null);
     }
@@ -77,10 +75,10 @@ public class ACMERent {
         return locacoes;
     }
 
-    public void alterarSituacaoAutomovel(String placa, boolean novaSituacao) {
+    public void alterarSituacaoAutomovel(String placa) {
         Automovel automovel = consultarAutomovel(placa);
         if (automovel != null) {
-            automovel.setDisponivel(novaSituacao);
+            automovel.setDisponivel(!automovel.isDisponivel());
         }
     }
 }

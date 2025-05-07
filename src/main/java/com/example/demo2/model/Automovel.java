@@ -1,5 +1,8 @@
 package com.example.demo2.model;
 
+import lombok.Data;
+
+@Data
 public class Automovel {
     private String id;
     private String placa;
@@ -29,35 +32,7 @@ public class Automovel {
         this.disponivel = disponivel;
     }
 
-    public boolean isDisponivel() {
-        return disponivel;
-    }
-
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
-    }
-
     public boolean deveSerRetirado(int anoAtual) {
         return (anoAtual - ano) > 5;
-    }
-
-    public String getPlaca() {
-        return placa;
-    }
-
-    public int getAno() {
-        return ano;
-    }
-
-    public double getValorDiaria() {
-        return valorDiaria;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 }

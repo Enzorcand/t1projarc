@@ -1,12 +1,6 @@
 package com.example.demo2.model;
 
-public class Atendente implements IbasicServices {
-    private ACMERent sistema;
-
-    public Atendente(ACMERent sistema) {
-        this.sistema = sistema;
-    }
-
+public class Atendente implements IBasicServices {
     @Override
     public Cliente consultarCliente(String cpf) {
         return sistema.consultarCliente(cpf);

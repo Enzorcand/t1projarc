@@ -1,7 +1,7 @@
 package com.example.demo2.controller;
 
 
-import com.example.demo2.dto.LocacaoRequest;
+import com.example.demo2.dto.LocacaoDTO;
 import com.example.demo2.dto.PlacaDTO;
 import com.example.demo2.model.ACMERent;
 import com.example.demo2.model.Automovel;
@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 public class ACMERentController {
 
-    private ACMERent system;
+    final ACMERent system;
 
     public ACMERentController() {
         system = new ACMERent();
@@ -61,20 +61,18 @@ public class ACMERentController {
         return ResponseEntity.ok(resp.isDisponivel());
     }
     @PostMapping("/atendimento/cadlocacao")
-    public ResponseEntity<Boolean> cadastrarLocacao(@RequestBody LocacaoRequest locacaoRequest) {
+    public ResponseEntity<Boolean> cadastrarLocacao(@RequestBody LocacaoDTO LocacaoDTO) {
         boolean sucesso = system.cadastrarLocacao(
-                locacaoRequest.getCpf(),
-                locacaoRequest.getPlaca(),
-                locacaoRequest.getDataInicio(),
-                locacaoRequest.getDias()
+                LocacaoDTO.getCpf(),
+                LocacaoDTO.getPlaca(),
+                LocacaoDTO.getDataInicio(),
+                LocacaoDTO.getDias()
         ) != null;
         return ResponseEntity.ok(sucesso);
     }
 
-    @PostMapping("/atendimento/atualizaautomovel/{id}/estado/{status}")
-    public ResponseEntity<Automovel> atualizaStatusAutomovel (@PathVariable(value = "id") String id, @PathVariable
-            (value = "status") Boolean status) {
-
+    @PostMapping("/atendimento/atualizaautomovel/{id}/estado")
+    public ResponseEntity<Automovel> atualizaStatusAutomovel (@PathVariable(value = "id") String id) {
         Automovel resp = system.getTodosAutomoveis().stream()
                 .filter(Automovel -> Automovel.getId().equals(id))
                 .findFirst()
@@ -82,8 +80,6 @@ public class ACMERentController {
         if (resp == null) {
             return ResponseEntity.notFound().build();
         }
-        resp.setDisponivel(status);
-
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(resp);
@@ -99,7 +95,7 @@ public class ACMERentController {
             return ResponseEntity.notFound().build();
         }
         resp.finalizar();
-        system.getTodosAutomoveis().remove(resp);
+        system.getTodasLocacoes().remove(resp);
         return ResponseEntity.ok(true);
     }
 }

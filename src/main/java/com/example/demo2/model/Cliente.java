@@ -1,5 +1,8 @@
 package com.example.demo2.model;
 
+import lombok.Data;
+
+@Data
 public class Cliente {
     private String nome;
     private String cpf;
@@ -9,17 +12,5 @@ public class Cliente {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public String getTelefone() {
-        return telefone;
     }
 }

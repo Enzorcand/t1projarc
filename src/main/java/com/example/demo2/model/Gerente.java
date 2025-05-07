@@ -1,13 +1,7 @@
 package com.example.demo2.model;
 
 import java.util.List;
-public class Gerente implements IbasicServices {
-    private ACMERent sistema;
-
-    public Gerente(ACMERent sistema) {
-        this.sistema = sistema;
-    }
-
+public class Gerente implements IBasicServices {
     @Override
     public Cliente consultarCliente(String cpf) {
         return sistema.consultarCliente(cpf);
@@ -51,7 +45,7 @@ public class Gerente implements IbasicServices {
         return sistema.getTodasLocacoes();
     }
 
-    public void alterarSituacaoAutomovel(String placa, boolean novaSituacao) {
-        sistema.alterarSituacaoAutomovel(placa, novaSituacao);
+    public void alterarSituacaoAutomovel(String placa) {
+        sistema.alterarSituacaoAutomovel(placa);
     }
 }

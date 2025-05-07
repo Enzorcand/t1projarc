@@ -3,7 +3,7 @@ package com.example.demo2.dto;
 import lombok.Data;
 
 @Data
-public class LocacaoRequest {
+public class LocacaoDTO {
     private String codigo;
     private String cpf;
     private String placa;
